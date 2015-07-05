@@ -42,5 +42,12 @@ window.onload = function() {
         }
    }
    
+   var days = document.getElementsByClassName("day");
+   
+   for( var i = 0; i < days.length; ++i ) {
+       var line = document.createElement("div");
+       line.className = "line";
+       days[i].appendChild(line);
+   }
 
 };

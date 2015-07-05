@@ -27,7 +27,7 @@ article #content {
   float: left;
 }
 #year .month .week {
-  width: 19.76%;
+  width: 19.75%;
   border: 1px solid graytext;
   float: left;
   height: 700px;
@@ -35,7 +35,11 @@ article #content {
 #year .month .week .day {
   height: 700px;
   float: left;
-  width: 13.19%;
+  width: 13.0%;
   border: 1px dotted #C9D4E4;
+}
+#year .month .week .day .line {
+  height: 20px;
+  background-color: teal;
 }
 /*# sourceMappingURL=style.css.map */
