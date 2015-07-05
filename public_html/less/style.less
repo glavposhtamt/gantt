@@ -1,0 +1,50 @@
+/* 
+    Created on : 04.07.2015, 20:55:28
+    Author     : sergey
+*/
+
+@height: 700px;
+
+article {
+    margin: 0 auto;
+    width: 1500px;
+    overflow: scroll;
+    margin-top: 30px;
+    #content {
+        width: 1000%;
+    }
+
+}
+
+#manamanagement {
+    background-color: gray;
+    width: 2%;
+    height: @height;
+    float: left;
+   // position: fixed;
+}
+
+#year {
+    //background-color: green;
+    width: 75%;
+
+    float:left;
+
+    .month {
+       border: 1px solid orangered;
+        width: 8.3%;
+        float: left; 
+        .week {
+            width: 19.76%;
+            border: 1px solid graytext;
+            float: left;
+            height: @height;
+            .day {
+                height: @height;
+                float: left;
+                width: 13.19%;
+                border: 1px dotted #C9D4E4;
+            }
+        }
+    }
+}
