@@ -3,52 +3,46 @@
     Author     : sergey
 */
 
-@height: 700px;
+@height: 500px;
+@width: 880%;
 
-article {
-    margin: 0 auto;
-    width: 1500px;
-    overflow: scroll;
-    margin-top: 30px;
-    #content {
-        width: 1000%;
-    }
-
+.procedure {
+    height: 20px;
+    background-color: teal;
 }
 
-#manamanagement {
-    background-color: gray;
-    width: 2%;
+article {  margin-top: 50px; }
+
+#management {
+    background-color: thistle;
     height: @height;
-    float: left;
-   // position: fixed;
 }
+#chart { overflow-x: scroll; }
 
 #year {
-    //background-color: green;
-    width: 75%;
-
-    float:left;
-
+    width: @width;
     .month {
-       border: 1px solid orangered;
-        width: 8.3%;
-        float: left; 
+        outline: 1px solid orangered;
+        height: @height;
+        display:inline-block;
         .week {
-            width: 19.75%;
             border: 1px solid graytext;
-            float: left;
             height: @height;
+            display:inline-block;
             .day {
                 height: @height;
-                float: left;
-                width: 13.0%;
+                width: 20px;
                 border: 1px dotted #C9D4E4;
+                display:inline-block;
                 .line {
-                    height: 20px;
-                    background-color: teal;
+                    .procedure;
                 }
+
             }
         }
     }
+}
+
+#management {
+    .line { .procedure; }    
 }

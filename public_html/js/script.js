@@ -43,11 +43,16 @@ window.onload = function() {
    }
    
    var days = document.getElementsByClassName("day");
+   var manager = document.getElementById("management");
    
    for( var i = 0; i < days.length; ++i ) {
        var line = document.createElement("div");
        line.className = "line";
        days[i].appendChild(line);
    }
+   
+    var line = document.createElement("div");
+    line.className = "line";
+    manager.appendChild(line);
 
 };
