@@ -46,14 +46,14 @@ article {
   border: 1px dotted #C9D4E4;
   display: inline-block;
 }
-#year .month .week .day .line {
+#year .month .week .day div[class^="line"] {
   height: 20px;
   background-color: teal;
 }
 #year .month .week .day .date {
   display: table;
 }
-#management .line {
+#management div[class^="line"] {
   height: 20px;
   background-color: teal;
 }

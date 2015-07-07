@@ -3,6 +3,8 @@
         return month >= 0 && month < 12 ? 32 - new Date(this.getFullYear(), month, 32).getDate() : null;
 };
 
+var LineCount = 0;
+
 window.onload = function() {
 
     /* Создаём DOM-элементы графика */
@@ -55,12 +57,17 @@ window.onload = function() {
   */
  
 function addRow() {
+    ++LineCount;
+    var count = 0, daysInYear = [];
+    var date = new Date();
+    for( var i = 0; i < 12; ++i ) daysInYear[i] = date.daysInMonth(i);
     var days = document.getElementsByClassName("day");
     var manager = document.getElementById("management");
    
-    for( var i = 0; i < days.length; ++i ) {
+    for( var i = 0, j = 0; i < days.length; ++i, ++j ) {
+        if( j === daysInYear[count] ) { j = 0; ++count; }
         var line = document.createElement("div");
-        line.className = "line";
+        line.className = "line" + (count + 1) + "_" + (j + 1) + "_" + LineCount;
         days[i].appendChild(line);
     }
    
