@@ -6,9 +6,18 @@
 @height: 500px;
 @width: 880%;
 
-.procedure {
+.row-line {
     height: 20px;
     background-color: teal;
+}
+
+.row-desc {
+    height: 20px;
+    background-color: greenyellow;
+}
+
+.day-nomber {
+    display: table;
 }
 
 article {  margin-top: 50px; }
@@ -29,20 +38,20 @@ article {  margin-top: 50px; }
             border: 1px solid graytext;
             height: @height;
             display:inline-block;
+            .desc { .row-desc; }
             .day {
-                height: @height;
+                height: 480px;
                 width: 20px;
                 border: 1px dotted #C9D4E4;
                 display:inline-block;
-                .line {
-                    .procedure;
-                }
-
+                .line { .row-line; }
+                .date { .day-nomber; }
             }
         }
     }
 }
 
 #management {
-    .line { .procedure; }    
+    .line { .row-line; }
+    .desc { .row-desc; }
 }

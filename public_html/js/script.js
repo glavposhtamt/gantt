@@ -5,7 +5,7 @@
 
 window.onload = function() {
 
-    /* Создаём DOM-элементы */
+    /* Создаём DOM-элементы графика */
 
     var content = document.getElementById("year");
     for( var i = 0; i < 12; ++i ) {
@@ -28,7 +28,7 @@ window.onload = function() {
    var date = new Date();
    
    var countDays = 0;
-   
+      
     for( var i = 0; i < weeks.length; ++i ) {
         var monthIndex = parseInt( i / 5, 10 );
         for( var j = 0; j < 7; ++j ) {
@@ -42,17 +42,74 @@ window.onload = function() {
         }
    }
    
-   var days = document.getElementsByClassName("day");
-   var manager = document.getElementById("management");
+   createDiscription( "week" ); 
    
-   for( var i = 0; i < days.length; ++i ) {
-       var line = document.createElement("div");
-       line.className = "line";
-       days[i].appendChild(line);
-   }
+   addDaysRow();
+   addRow();
+   addRow();
+   addRow();
+};
+
+ /*
+  * Функция добавляет строки в график
+  */
+ 
+function addRow() {
+    var days = document.getElementsByClassName("day");
+    var manager = document.getElementById("management");
+   
+    for( var i = 0; i < days.length; ++i ) {
+        var line = document.createElement("div");
+        line.className = "line";
+        days[i].appendChild(line);
+    }
    
     var line = document.createElement("div");
     line.className = "line";
     manager.appendChild(line);
+}
 
-};
+ /*
+  * Функция создаёт колонку с описанием промежутка времени
+  */
+
+function createDiscription( timeClass ) {
+    var node = document.getElementsByClassName( timeClass );
+    var manager = document.getElementById("management");
+   
+    for( var i = 0; i < node.length; ++i ) {
+        var desc = document.createElement("div");
+        desc.className = "desc";
+        node[i].insertBefore(desc, node[i].firstChild);
+    }
+   
+    var desc = document.createElement("div");
+    desc.className = "desc";
+    manager.insertBefore(desc, desc.firstChild);
+}
+
+ /*
+  * Функция создаёт колонку с описанием промежутка времени
+  */
+
+function addDaysRow() {
+    var count = 0, daysInYear = [];
+    var date = new Date();
+  
+    for( var i = 0; i < 12; ++i ) daysInYear[i] = date.daysInMonth(i);
+   
+    var days = document.getElementsByClassName("day");
+    var manager = document.getElementById("management");
+   
+    for( var i = 0, j = 0; i < days.length; ++i, ++j ) {
+        if( j === daysInYear[count] ) { j = 0; ++count; }
+        var line = document.createElement("div");
+        line.className = "date";
+        line.innerHTML = j + 1;
+        days[i].appendChild(line);
+    }
+   
+    var line = document.createElement("div");
+    line.className = "line";
+    manager.appendChild(line);
+}
