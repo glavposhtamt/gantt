@@ -42,8 +42,8 @@ window.onload = function() {
         }
    }
    
-   createDiscription( "week" ); 
-   
+   addRowMonthName(); 
+   addDaysNameRow();
    addDaysRow();
    addRow();
    addRow();
@@ -70,16 +70,17 @@ function addRow() {
 }
 
  /*
-  * Функция создаёт колонку с описанием промежутка времени
+  * Функция создаёт строку с названием месяцев
   */
 
-function createDiscription( timeClass ) {
-    var node = document.getElementsByClassName( timeClass );
+function addRowMonthName() {
+    var node = document.getElementsByClassName( "month" );
     var manager = document.getElementById("management");
-   
+    var monthsName = [ "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" ];
     for( var i = 0; i < node.length; ++i ) {
         var desc = document.createElement("div");
-        desc.className = "desc";
+        desc.className = "desc text-center";
+        desc.innerHTML = monthsName[i];
         node[i].insertBefore(desc, node[i].firstChild);
     }
    
@@ -89,7 +90,7 @@ function createDiscription( timeClass ) {
 }
 
  /*
-  * Функция создаёт колонку с описанием промежутка времени
+  * Функция создаёт строку с числами
   */
 
 function addDaysRow() {
@@ -112,4 +113,33 @@ function addDaysRow() {
     var line = document.createElement("div");
     line.className = "line";
     manager.appendChild(line);
+}
+
+/*
+ * Функция создаёт строку с днями недели
+ */
+function addDaysNameRow() {
+    var count = 0, daysInYear = [];
+    var date = new Date();
+    var daysName = [ "Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб" ];
+  
+    for( var i = 0; i < 12; ++i ) daysInYear[i] = date.daysInMonth(i);
+        
+    var days = document.getElementsByClassName("day");
+    var manager = document.getElementById("management");
+   
+    for( var i = 0, j = 0; i < days.length; ++i, ++j ) {
+        if( j === daysInYear[count] ) { j = 0; ++count; }
+        date.setMonth(count);
+        date.setDate(j + 1);
+        var line = document.createElement("div");
+        line.className = "date";
+        line.innerHTML = daysName[date.getDay()];
+        days[i].appendChild(line);
+    }
+   
+    var line = document.createElement("div");
+    line.className = "line";
+    manager.appendChild(line);
+    delete date;
 }

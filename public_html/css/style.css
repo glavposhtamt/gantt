@@ -31,14 +31,14 @@ article {
   height: 500px;
   display: inline-block;
 }
-#year .month .week {
-  border: 1px solid graytext;
-  height: 500px;
-  display: inline-block;
-}
-#year .month .week .desc {
+#year .month .desc {
   height: 20px;
   background-color: greenyellow;
+}
+#year .month .week {
+  border: 1px solid graytext;
+  height: 480px;
+  display: inline-block;
 }
 #year .month .week .day {
   height: 480px;
