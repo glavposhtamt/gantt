@@ -49,7 +49,6 @@ window.onload = function() {
    addDaysRow();
    addRow();
    addRow();
-   addRow();
 };
 
  /*
@@ -67,7 +66,7 @@ function addRow() {
     for( var i = 0, j = 0; i < days.length; ++i, ++j ) {
         if( j === daysInYear[count] ) { j = 0; ++count; }
         var line = document.createElement("div");
-        line.className = "line" + (count + 1) + "_" + (j + 1) + "_" + LineCount;
+        line.className = "line" + LineCount + "_" + (count + 1) + "_" + (j + 1);
         days[i].appendChild(line);
     }
    
