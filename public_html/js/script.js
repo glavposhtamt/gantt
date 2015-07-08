@@ -54,7 +54,6 @@ window.onload = function() {
 
             addRow();
             editRow(parseInt(param[0][0]), parseInt(param[1][0]), parseInt(param[0][1]), parseInt(param[1][1]), i + 1);
-            //console.log(i);
 
         }
    });
@@ -168,9 +167,8 @@ function editRow(day1, day2, month1, month2, row) {
     
     var arr = [].slice.call(htmlCollection);
     var deb = arr.indexOf(firstElement[0]);
-    
-    var days = ( new Date(month2 + '-' +  day2 + "-2015").getTime() - new Date(month1 + '-' +  day1 + "-2015").getTime() ) / (1000 * 60 * 60 *24);
-    
+    var days = ( new Date(month2 + '/' +  day2 + "/2015").getTime() - new Date(month1 + '/' +  day1 + "/2015").getTime() ) / (1000 * 60 * 60 *24);
+    console.log(days);
     for(var i = deb; i < (deb + days + 1); ++i) {
         arr[i].className += " selectDays";
     }
