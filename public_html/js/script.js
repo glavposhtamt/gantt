@@ -41,9 +41,23 @@ window.onload = function() {
    addRowMonthName(); 
    addDaysNameRow();
    addDaysRow();
-   addRow();
-   addRow();
-   editRow(2, 10, 7, 8, 2);
+   
+    $.get("json/date.json", function(obj) {
+        var line = [], i = 0, proxy, param = [];
+        for( proxy in obj ) { line[i] = proxy; ++i; }
+        obj.length = i;
+        
+        for(var i = 0; i < obj.length; ++i) { 
+            param[0] = obj[line[i]].start.match(/\d{1,2}/g);
+            param[1] = obj[line[i]].end.match(/\d{1,2}/g); 
+            param[2] = obj[line[i]].desc; 
+
+            addRow();
+            editRow(parseInt(param[0][0]), parseInt(param[1][0]), parseInt(param[0][1]), parseInt(param[1][1]), i + 1);
+            //console.log(i);
+
+        }
+   });
 };
 
  /*
@@ -157,8 +171,6 @@ function editRow(day1, day2, month1, month2, row) {
     
     var days = ( new Date(month2 + '-' +  day2 + "-2015").getTime() - new Date(month1 + '-' +  day1 + "-2015").getTime() ) / (1000 * 60 * 60 *24);
     
-    console.log(deb);
-    console.log(days);
     for(var i = deb; i < (deb + days + 1); ++i) {
         arr[i].className += " selectDays";
     }
