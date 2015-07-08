@@ -43,7 +43,7 @@ window.onload = function() {
    addDaysRow();
    addRow();
    addRow();
-   editRow(5, 8, 1, 7, 2);
+   editRow(2, 10, 7, 8, 2);
 };
 
  /*
@@ -148,13 +148,19 @@ function addDaysNameRow() {
 function editRow(day1, day2, month1, month2, row) {
     var selectorRow = "line" + row;
     var selectorFirst = selectorRow + "_" + month1 + "_" + day1;
-    var selectorSecond = selectorRow + "_" + month2 + "_" + day2;
+    
     var firstElement = document.getElementsByClassName(selectorFirst);
     var htmlCollection = document.getElementsByClassName(selectorRow);
+    
     var arr = [].slice.call(htmlCollection);
     var deb = arr.indexOf(firstElement[0]);
-    console.log(deb);
-    console.log(selectorFirst);
-    console.log(selectorRow);
     
+    var days = ( new Date(month2 + '-' +  day2 + "-2015").getTime() - new Date(month1 + '-' +  day1 + "-2015").getTime() ) / (1000 * 60 * 60 *24);
+    
+    console.log(deb);
+    console.log(days);
+    for(var i = deb; i < (deb + days + 1); ++i) {
+        arr[i].className += " selectDays";
+    }
+   
 }

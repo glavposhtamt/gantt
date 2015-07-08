@@ -4,7 +4,6 @@
 */
 .row-line {
   height: 20px;
-  background-color: teal;
 }
 .row-desc {
   height: 20px;
@@ -43,6 +42,8 @@ article {
 }
 #year .month .day div[class^="line"] {
   height: 20px;
+}
+#year .month .day .selectDays {
   background-color: teal;
 }
 #year .month .day .date {
@@ -53,7 +54,6 @@ article {
 }
 #management div[class^="line"] {
   height: 20px;
-  background-color: teal;
 }
 #management .desc {
   height: 20px;
