@@ -33,17 +33,24 @@ window.onload = function() {
       
     for( var i = 0; i < weeks.length; ++i ) {
         var monthIndex = parseInt( i / 5, 10 );
+        date.setMonth(monthIndex);
+        
         for( var j = 0; j < 7; ++j ) {
+            date.setDate(countDays + 1);
+            
             if( countDays === date.daysInMonth(monthIndex) ) {
                 countDays = 0; break;
             }
+                 
             var day = document.createElement("div");
             day.className = "day";
             weeks[i].appendChild(day);
+            if(date.getDay() === 0 ){ ++countDays; break; }
             ++countDays;
+            
         }
    }
-   
+  
    addRowMonthName(); 
    addDaysNameRow();
    addDaysRow();
@@ -66,7 +73,7 @@ function addRow() {
     for( var i = 0, j = 0; i < days.length; ++i, ++j ) {
         if( j === daysInYear[count] ) { j = 0; ++count; }
         var line = document.createElement("div");
-        line.className = "line" + LineCount + "_" + (count + 1) + "_" + (j + 1);
+        line.className = "line" + LineCount + " line" + (count + 1) + "_" + (j + 1);
         days[i].appendChild(line);
     }
    
