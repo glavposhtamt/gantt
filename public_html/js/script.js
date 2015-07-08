@@ -7,7 +7,7 @@ var LineCount = 0;
 
 window.onload = function() {
 
-    /* Создаём DOM-элементы графика */
+    /* Создаём DOM-элементы графика (месяцы) */
 
     var content = document.getElementById("year");
     for( var i = 0; i < 12; ++i ) {
@@ -15,47 +15,35 @@ window.onload = function() {
         month.className = "month";
         content.appendChild(month);      
     }
-   var months = document.getElementsByClassName("month");
+    var months = document.getElementsByClassName("month");
    
-   for( var i = 0; i < 12; ++i ) {
-        for( var j = 0; j < 5; ++j ) {
-            var week = document.createElement("div");
-            week.className = "week";
-            months[i].appendChild(week);
-        }    
-   }
-
-   var weeks = document.getElementsByClassName("week");
+    /* Заполняем месяцы днями */
    
-   var date = new Date();
+    var date = new Date();
    
-   var countDays = 0;
+    var daysInYear = [];
+    for( var i = 0; i < 12; ++i ) daysInYear[i] = date.daysInMonth(i);
       
-    for( var i = 0; i < weeks.length; ++i ) {
-        var monthIndex = parseInt( i / 5, 10 );
-        date.setMonth(monthIndex);
-        
-        for( var j = 0; j < 7; ++j ) {
-            date.setDate(countDays + 1);
-            
-            if( countDays === date.daysInMonth(monthIndex) ) {
-                countDays = 0; break;
-            }
-                 
+    for( var i = 0; i < 12; ++i ) {
+                
+        for( var j = 0; j < daysInYear[i]; ++j ) { 
+            date.setDate(j + 1);
+            date.setMonth(i);     
             var day = document.createElement("div");
             day.className = "day";
-            weeks[i].appendChild(day);
-            if(date.getDay() === 0 ){ ++countDays; break; }
-            ++countDays;
-            
+            months[i].appendChild(day);
+            if(date.getDay() === 0 ){ 
+                day.className += " endOfweek";
+            }
         }
    }
-  
+   
    addRowMonthName(); 
    addDaysNameRow();
    addDaysRow();
    addRow();
    addRow();
+   editRow(5, 8, 1, 7, 2);
 };
 
  /*
@@ -73,7 +61,7 @@ function addRow() {
     for( var i = 0, j = 0; i < days.length; ++i, ++j ) {
         if( j === daysInYear[count] ) { j = 0; ++count; }
         var line = document.createElement("div");
-        line.className = "line" + LineCount + " line" + (count + 1) + "_" + (j + 1);
+        line.className = "line" + LineCount + " line" + LineCount + "_" + (count + 1) + "_" + (j + 1);
         days[i].appendChild(line);
     }
    
@@ -155,4 +143,18 @@ function addDaysNameRow() {
     line.className = "line";
     manager.appendChild(line);
     delete date;
+}
+
+function editRow(day1, day2, month1, month2, row) {
+    var selectorRow = "line" + row;
+    var selectorFirst = selectorRow + "_" + month1 + "_" + day1;
+    var selectorSecond = selectorRow + "_" + month2 + "_" + day2;
+    var firstElement = document.getElementsByClassName(selectorFirst);
+    var htmlCollection = document.getElementsByClassName(selectorRow);
+    var arr = [].slice.call(htmlCollection);
+    var deb = arr.indexOf(firstElement[0]);
+    console.log(deb);
+    console.log(selectorFirst);
+    console.log(selectorRow);
+    
 }

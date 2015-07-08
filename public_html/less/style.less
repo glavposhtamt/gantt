@@ -35,10 +35,6 @@ article {  margin-top: 50px; }
         height: @height;
         display:inline-block;
         .desc { .row-desc; }
-        .week {
-            border: 1px dotted graytext;
-            height: 480px;
-            display:inline-block;
             .day {
                 height: 480px;
                 width: 20px;
@@ -47,7 +43,10 @@ article {  margin-top: 50px; }
                 div[class^="line"] { .row-line; }
                 .date { .day-nomber; }
             }
-        }
+            .endOfweek {
+                border-right: 1px solid black;
+            }
+
     }
 }
 

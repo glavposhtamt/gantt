@@ -27,7 +27,7 @@ article {
   width: 880%;
 }
 #year .month {
-  outline: 1px solid #8B9CD2;
+  outline: 1px dotted #8B9CD2;
   height: 500px;
   display: inline-block;
 }
@@ -35,23 +35,21 @@ article {
   height: 20px;
   background-color: greenyellow;
 }
-#year .month .week {
-  border: 1px dotted graytext;
-  height: 480px;
-  display: inline-block;
-}
-#year .month .week .day {
+#year .month .day {
   height: 480px;
   width: 20px;
   border: 1px dotted #C9D4E4;
   display: inline-block;
 }
-#year .month .week .day div[class^="line"] {
+#year .month .day div[class^="line"] {
   height: 20px;
   background-color: teal;
 }
-#year .month .week .day .date {
+#year .month .day .date {
   display: table;
+}
+#year .month .endOfweek {
+  border-right: 1px solid black;
 }
 #management div[class^="line"] {
   height: 20px;
