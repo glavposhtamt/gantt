@@ -158,6 +158,10 @@ function addDaysNameRow() {
     delete date;
 }
 
+/*
+ * Функция задаёт класс выделенным ячейкам
+ */
+
 function editRow(day1, day2, month1, month2, row) {
     var selectorRow = "line" + row;
     var selectorFirst = selectorRow + "_" + month1 + "_" + day1;
