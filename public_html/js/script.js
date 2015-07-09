@@ -53,7 +53,7 @@ window.onload = function() {
             param[2] = obj[line[i]].desc; 
 
             addRow();
-            editRow(parseInt(param[0][0]), parseInt(param[1][0]), parseInt(param[0][1]), parseInt(param[1][1]), i + 1);
+            editRow(parseInt(param[0][0]), parseInt(param[1][0]), parseInt(param[0][1]), parseInt(param[1][1]), i + 1, param[2]);
 
         }
    });
@@ -79,7 +79,7 @@ function addRow() {
     }
    
     var line = document.createElement("div");
-    line.className = "line";
+    line.className = "manage" + LineCount;
     manager.appendChild(line);
 }
 
@@ -125,7 +125,8 @@ function addDaysRow() {
     }
    
     var line = document.createElement("div");
-    line.className = "line";
+    line.className = "line text-center";
+    line.innerHTML = "Дата:";
     manager.appendChild(line);
 }
 
@@ -153,7 +154,8 @@ function addDaysNameRow() {
     }
    
     var line = document.createElement("div");
-    line.className = "line";
+    line.className = "line text-center";
+    line.innerHTML = "Дни недели";
     manager.appendChild(line);
     delete date;
 }
@@ -162,19 +164,26 @@ function addDaysNameRow() {
  * Функция задаёт класс выделенным ячейкам
  */
 
-function editRow(day1, day2, month1, month2, row) {
+function editRow(day1, day2, month1, month2, row, message) {
     var selectorRow = "line" + row;
     var selectorFirst = selectorRow + "_" + month1 + "_" + day1;
+    var selectorPanel = "manage" + row;
     
     var firstElement = document.getElementsByClassName(selectorFirst);
     var htmlCollection = document.getElementsByClassName(selectorRow);
+    var manageRow = document.getElementsByClassName(selectorPanel);
     
     var arr = [].slice.call(htmlCollection);
     var deb = arr.indexOf(firstElement[0]);
     var days = ( new Date(month2 + '/' +  day2 + "/2015").getTime() - new Date(month1 + '/' +  day1 + "/2015").getTime() ) / (1000 * 60 * 60 *24);
-    console.log(days);
+
     for(var i = deb; i < (deb + days + 1); ++i) {
         arr[i].className += " selectDays";
     }
+    
+    var messDiv = document.createElement("div");
+    messDiv.innerHTML = message;
+    messDiv.className = "message";
+    manageRow[0].appendChild(messDiv);
    
 }
