@@ -6,7 +6,9 @@
 var LineCount = 0;
 
 window.onload = function() {
-
+    
+    var date = new Date();
+    
     /* Создаём DOM-элементы графика (месяцы) */
 
     var content = document.getElementById("year");
@@ -19,8 +21,7 @@ window.onload = function() {
    
     /* Заполняем месяцы днями */
    
-    var date = new Date();
-   
+       
     var daysInYear = [];
     for( var i = 0; i < 12; ++i ) daysInYear[i] = date.daysInMonth(i);
       
@@ -79,7 +80,7 @@ function addRow() {
     }
    
     var line = document.createElement("div");
-    line.className = "manage" + LineCount;
+    line.className = "manage" + LineCount + " list-group-item";
     manager.appendChild(line);
 }
 
@@ -93,13 +94,13 @@ function addRowMonthName() {
     var monthsName = [ "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" ];
     for( var i = 0; i < node.length; ++i ) {
         var desc = document.createElement("div");
-        desc.className = "desc text-center";
+        desc.className = "desc text-center list-group-item-success";
         desc.innerHTML = monthsName[i];
         node[i].insertBefore(desc, node[i].firstChild);
     }
    
     var desc = document.createElement("div");
-    desc.className = "desc";
+    desc.className = "desc list-group-item list-group-item-success";
     manager.insertBefore(desc, desc.firstChild);
 }
 
@@ -125,7 +126,7 @@ function addDaysRow() {
     }
    
     var line = document.createElement("div");
-    line.className = "line text-center";
+    line.className = "line text-center list-group-item list-group-item-info";
     line.innerHTML = "Дата:";
     manager.appendChild(line);
 }
@@ -154,8 +155,8 @@ function addDaysNameRow() {
     }
    
     var line = document.createElement("div");
-    line.className = "line text-center";
-    line.innerHTML = "Дни недели";
+    line.className = "line text-center list-group-item list-group-item-info";
+    line.innerHTML = "Дни недели:";
     manager.appendChild(line);
     delete date;
 }

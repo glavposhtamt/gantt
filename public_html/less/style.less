@@ -4,23 +4,26 @@
 */
 
 @height: 500px;
-@width: 880%;
+@width: 1080%;
 
-.row-line { height: 20px; }
+.row-line { 
+    height: 25px; 
+    padding: 20px 5px;
+}
 
 .row-desc {
-    height: 20px;
-    background-color: greenyellow;
+    height: 25px;
+    padding: 5px;
 }
 
 .day-nomber {
     display: table;
+    padding: 10px 5px;
 }
 
 article {  margin-top: 50px; }
 
 #management {
-    background-color: thistle;
     height: @height;
 }
 #chart { overflow-x: scroll; }
@@ -33,21 +36,24 @@ article {  margin-top: 50px; }
         display:inline-block;
         .desc { .row-desc; }
             .day {
-                height: 480px;
-                width: 20px;
-                border: 1px dotted #C9D4E4;
+                height: 475px;
+                width: 25px;
+                border: 1px solid #C9D4E4;
                 display:inline-block;
                 div[class^="line"] { .row-line; }
-                .selectDays { background-color: teal; }
+                color: #31708F;
+                background-color: #D9EDF7;
+                .selectDays { 
+                    background-color: #C9D4E4; 
+                }
                 .date { .day-nomber; }
             }
             .endOfweek {
-                border-right: 1px solid black;
+                border-right: 1px dotted gray;
             }
     }
 }
 
 #management {
-    div[class^="line"] { .row-line; }
     .desc { .row-desc; }
 }
